@@ -1,0 +1,15 @@
+.header {
+    background-color: blueviolet;
+    color: white;
+    text-align: center;
+}
+
+.form-select {
+    width: fit-content;
+}
+
+.col-form-label {
+    font-size: x-large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
