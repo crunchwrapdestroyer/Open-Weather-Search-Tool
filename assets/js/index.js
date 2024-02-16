@@ -59,17 +59,16 @@ function makeForecastCards (forecastData) {
 
         var cardInnerHTML = `
             <p>${date}</p>
-            <h1>${forecastData.list.name}</h1>
-            <p>${forecastData.main.temp} °F</p>
-            <p>Wind: ${forecastData.wind.speed} MPH</p>
-            <p>Humidity: ${forecastData.main.humidity}</p>
-            <img src="https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png"><img>
+            <h1>${dayWeather.list.name}</h1>
+            <p>${dayWeather.main.temp} °F</p>
+            <p>Wind: ${dayWeather.wind.speed} MPH</p>
+            <p>Humidity: ${dayWeather.main.humidity}</p>
+            <img src="https://openweathermap.org/img/w/${dayWeather.weather[0].icon}.png"><img>
         `
         forecastContainer.innerHTML = cardInnerHTML
         forecastContainerParent.appendChild(forecastContainer)
     }
 }
     
-
 const searchForm = document.getElementById('search-form');
 searchForm.addEventListener("submit",handleFormSubmit)
