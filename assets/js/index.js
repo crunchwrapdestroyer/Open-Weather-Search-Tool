@@ -49,32 +49,27 @@ function makeMainCard(weatherData) {
 function makeForecastCards (forecastData) {
     console.log(forecastData)
     var foreCastList = forecastData.list
+    var forecastContainerParent = document.getElementById('forecast-container')
+
     for (let i = 0; i < foreCastList.length; i+=8) {
         const dayWeather = foreCastList[i];
-        console.log(dayWeather) 
-        var monday = dayWeather
-        var forecastContainer = document.getElementById('forecast-container')
-    }
-    var dateAndTime = new Date(forecastData.dt * 1000)
-    var date = dateAndTime.toLocaleDateString()
-        console.log(date)
+        console.log(dayWeather)
+        var dateAndTime = new Date(forecastData.dt * 1000)
+        var date = dateAndTime.toLocaleDateString()
+
         var cardInnerHTML = `
             <p>${date}</p>
-            <h1>${monday.name}</h1>
+            <h1>${forecastData.list.name}</h1>
             <p>${forecastData.main.temp} °F</p>
             <p>Wind: ${forecastData.wind.speed} MPH</p>
             <p>Humidity: ${forecastData.main.humidity}</p>
             <img src="https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png"><img>
         `
         forecastContainer.innerHTML = cardInnerHTML
+        forecastContainerParent.appendChild(forecastContainer)
+    }
 }
-    // console.log('5 day forecast data')
-    // console.log(forecastData)
-    // var foreCastList = forecastData.list
-    // for (let i = 0; i < foreCastList.length; i+=8) {
-    //     const dayWeather = foreCastList[i];
-    //     console.log(dayWeather)
-    // }
+    
 
 const searchForm = document.getElementById('search-form');
 searchForm.addEventListener("submit",handleFormSubmit)
