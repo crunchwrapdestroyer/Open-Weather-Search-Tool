@@ -30,7 +30,6 @@ function fetchForecastAPI(cityToSearchFor){
 }
 
 function makeMainCard(weatherData) {
-    console.log(weatherData) 
     var currentWeatherContainer = document.getElementById('currentweather-container')
     var dateAndTime = new Date(weatherData.dt * 1000)
     var date = dateAndTime.toLocaleDateString()
@@ -47,19 +46,18 @@ function makeMainCard(weatherData) {
     }
 
 function makeForecastCards (forecastData) {
-    console.log(forecastData)
     var foreCastList = forecastData.list
     var forecastContainerParent = document.getElementById('forecast-container')
-
+    forecastContainerParent.innerHTML = ''
     for (let i = 0; i < foreCastList.length; i+=8) {
         const dayWeather = foreCastList[i];
         console.log(dayWeather)
-        var dateAndTime = new Date(forecastData.dt * 1000)
+        var dateAndTime = new Date(dayWeather.dt * 1000)
         var date = dateAndTime.toLocaleDateString()
-
+        var forecastContainer = document.createElement('div');
+        forecastContainer.classList.add('col', 'border', 'border-success')
         var cardInnerHTML = `
             <p>${date}</p>
-            <h1>${dayWeather.list.name}</h1>
             <p>${dayWeather.main.temp} °F</p>
             <p>Wind: ${dayWeather.wind.speed} MPH</p>
             <p>Humidity: ${dayWeather.main.humidity}</p>
